@@ -6,6 +6,8 @@
 </head>
 <body>
 <h1>TODO</h1>
-<p th:text="${message}"></p>
+<p th:text="${task.id}"></p>
+<p th:text="${task.title}"></p>
+<p th:text="${task.isCompleted} ? '完了' : '未完了'"></p>
 </body>
 </html>
