@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class IndexController {
 
-    private TaskService taskService = new TaskService();
+    private final TaskService taskService;
+
+    public IndexController(TaskService taskService) {
+        this.taskService = taskService;
+    }
 
     @GetMapping
     public String index(Model model) {
