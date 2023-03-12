@@ -14,7 +14,8 @@ public class IndexController {
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("taskList", taskService.findAll());
+        var dtoList = TaskDTO.toDTO(taskService.findAll());
+        model.addAttribute("taskList", dtoList);
         return "index";
     }
 }
