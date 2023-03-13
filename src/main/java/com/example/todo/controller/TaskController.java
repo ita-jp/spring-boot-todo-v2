@@ -3,6 +3,8 @@ package com.example.todo.controller;
 import com.example.todo.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,10 @@ public class TaskController {
     }
 
     @PostMapping
-    public String create(TaskForm form) {
+    public String create(@Validated TaskForm form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return showCreationForm();
+        }
         taskService.create(form.title(), form.isCompleted());
         return "redirect:/";
     }
