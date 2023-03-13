@@ -4,6 +4,7 @@ import com.example.todo.repository.TaskRecord;
 import com.example.todo.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class TaskService {
         return TaskRecord.toEntity(taskRepository.select());
     }
 
+    @Transactional
     public void create(String title, boolean completed) {
         taskRepository.insert(new TaskRecord(null, title, completed));
     }
