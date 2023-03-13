@@ -15,7 +15,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public String create() {
+    public String create(TaskForm form) {
         return "redirect:/";
     }
 }
