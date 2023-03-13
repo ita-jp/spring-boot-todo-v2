@@ -5,7 +5,7 @@ import com.example.todo.service.TaskEntity;
 import java.util.List;
 
 public record TaskRecord(
-        long id,
+        Long id,
         String title,
         boolean isCompleted) {
 

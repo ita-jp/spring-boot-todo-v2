@@ -16,4 +16,8 @@ public class TaskService {
     public List<TaskEntity> findAll() {
         return TaskRecord.toEntity(taskRepository.select());
     }
+
+    public void create(String title, boolean completed) {
+        taskRepository.insert(new TaskRecord(null, title, completed));
+    }
 }
