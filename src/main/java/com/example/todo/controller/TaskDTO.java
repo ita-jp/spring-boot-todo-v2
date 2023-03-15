@@ -18,7 +18,7 @@ public record TaskDTO(
     public static TaskDTO from(TaskEntity entity) {
         return new TaskDTO(
                 entity.id(),
-                entity.title(),
+                entity.summary(),
                 entity.status().name()
         );
     }

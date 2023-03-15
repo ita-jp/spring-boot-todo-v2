@@ -1,3 +1,3 @@
-INSERT INTO tasks (title, status) VALUES ('タスク1', 'TODO');
-INSERT INTO tasks (title, status) VALUES ('タスク2', 'DOING');
-INSERT INTO tasks (title, status) VALUES ('タスク3', 'DONE');
+INSERT INTO tasks (summary, description, status) VALUES ('タスク1', 'aaaaabbbbbccccceeeebb', 'TODO');
+INSERT INTO tasks (summary, description, status) VALUES ('タスク2', 'aaaaabbbbbccccceeeebb', 'DOING');
+INSERT INTO tasks (summary, description, status) VALUES ('タスク3', 'aaaaabbbbbccccceeeebb', 'DONE');

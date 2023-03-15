@@ -7,12 +7,13 @@ import java.util.List;
 
 public record TaskRecord(
         Long id,
-        String title,
+        String summary,
+        String description,
         String status
 ) {
 
     public TaskEntity toEntity() {
-        return new TaskEntity(id, title, TaskStatus.valueOf(status));
+        return new TaskEntity(id, summary, description, TaskStatus.valueOf(status));
     }
 
     public static List<TaskEntity> toEntity(List<TaskRecord> recordList) {

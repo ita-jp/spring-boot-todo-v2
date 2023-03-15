@@ -11,9 +11,9 @@ import java.util.List;
 @Mapper
 public interface TaskRepository {
 
-    @Select("SELECT * FROM tasks")
+    @Select("SELECT id, summary, description, status FROM tasks")
     List<TaskRecord> select();
 
-    @Insert("INSERT INTO tasks (title, status) VALUES (#{task.title}, #{task.status})")
+    @Insert("INSERT INTO tasks (summary, description, status) VALUES (#{task.summary}, #{task.description}, #{task.status})")
     void insert(@Param("task") TaskEntity taskRecord);
 }

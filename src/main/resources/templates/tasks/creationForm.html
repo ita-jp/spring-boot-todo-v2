@@ -12,8 +12,12 @@
 <div>
     <form th:action="@{/tasks}" th:method="post">
         <div>
-            <label for="titleInput">タイトル</label>
-            <input type="text" id="titleInput" name="title">
+            <label for="summaryInput">概要</label>
+            <input type="text" id="summaryInput" name="summary">
+        </div>
+        <div>
+            <label for="descriptionInput">詳細</label>
+            <textarea type="text" id="descriptionInput" name="description" rows="10" cols="50"></textarea>
         </div>
         <div>
             <label>ステータス</label>

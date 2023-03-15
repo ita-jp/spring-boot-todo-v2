@@ -5,7 +5,8 @@ import jakarta.validation.constraints.NotNull;
 
 public record TaskForm(
         @NotBlank
-        String title,
+        String summary,
+        String description,
         @NotNull
         String status
 ) {

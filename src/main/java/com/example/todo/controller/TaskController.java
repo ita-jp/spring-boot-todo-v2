@@ -28,7 +28,7 @@ public class TaskController {
         if (bindingResult.hasErrors()) {
             return showCreationForm();
         }
-        taskService.create(new TaskEntity(null, form.title(), TaskStatus.valueOf(form.status())));
+        taskService.create(new TaskEntity(null, form.summary(), form.description(), TaskStatus.valueOf(form.status())));
         return "redirect:/";
     }
 }
