@@ -7,6 +7,6 @@ public record TaskForm(
         @NotBlank
         String title,
         @NotNull
-        boolean isCompleted
+        String status
 ) {
 }

@@ -1,8 +1,8 @@
 package com.example.todo.service;
 
 public record TaskEntity(
-        long id,
+        Long id,
         String title,
-        boolean isCompleted
+        TaskStatus status
 ) {
 }

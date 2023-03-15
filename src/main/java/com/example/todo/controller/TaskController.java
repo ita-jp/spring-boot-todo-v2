@@ -1,6 +1,8 @@
 package com.example.todo.controller;
 
+import com.example.todo.service.TaskEntity;
 import com.example.todo.service.TaskService;
+import com.example.todo.service.TaskStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -26,7 +28,7 @@ public class TaskController {
         if (bindingResult.hasErrors()) {
             return showCreationForm();
         }
-        taskService.create(form.title(), form.isCompleted());
+        taskService.create(new TaskEntity(null, form.title(), TaskStatus.valueOf(form.status())));
         return "redirect:/";
     }
 }

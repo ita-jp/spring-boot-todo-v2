@@ -1,20 +1,18 @@
 package com.example.todo.repository;
 
 import com.example.todo.service.TaskEntity;
+import com.example.todo.service.TaskStatus;
 
 import java.util.List;
 
 public record TaskRecord(
         Long id,
         String title,
-        boolean isCompleted) {
+        String status
+) {
 
     public TaskEntity toEntity() {
-        return new TaskEntity(
-                id,
-                title,
-                isCompleted
-        );
+        return new TaskEntity(id, title, TaskStatus.valueOf(status));
     }
 
     public static List<TaskEntity> toEntity(List<TaskRecord> recordList) {

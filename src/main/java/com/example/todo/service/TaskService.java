@@ -19,7 +19,7 @@ public class TaskService {
     }
 
     @Transactional
-    public void create(String title, boolean completed) {
-        taskRepository.insert(new TaskRecord(null, title, completed));
+    public void create(TaskEntity task) {
+        taskRepository.insert(task);
     }
 }

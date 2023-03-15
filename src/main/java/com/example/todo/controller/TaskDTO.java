@@ -7,7 +7,7 @@ import java.util.List;
 public record TaskDTO(
         long id,
         String title,
-        boolean isCompleted
+        String status
 ) {
     public static List<TaskDTO> toDTO(List<TaskEntity> entityList) {
         return entityList.stream()
@@ -19,7 +19,7 @@ public record TaskDTO(
         return new TaskDTO(
                 entity.id(),
                 entity.title(),
-                entity.isCompleted()
+                entity.status().name()
         );
     }
 }

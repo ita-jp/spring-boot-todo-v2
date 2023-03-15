@@ -14,14 +14,14 @@
     <tr>
         <th>ID</th>
         <th>タイトル</th>
-        <th>完了/未完了</th>
+        <th>ステータス</th>
     </tr>
     </thead>
     <thead>
     <tr th:each="task : ${taskList}" th:object="${task}">
         <td th:text="*{id}"></td>
         <td th:text="*{title}"></td>
-        <td th:text="*{isCompleted} ? '完了' : '未完了'"></td>
+        <td th:text="*{status}"></td>
     </tr>
     </thead>
 </table>
