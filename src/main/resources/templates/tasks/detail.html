@@ -7,7 +7,7 @@
 <body>
 <a th:href="@{/}">一覧</a>
 <form th:action="@{/tasks/{id}(id=${task.id})}" th:method="DELETE">
-    <button type="submit">削除</button>
+    <button type="submit" onclick="return confirm('タスクを削除しますか？')">削除</button>
 </form>
 <div th:object="${task}">
     <h1 th:text="'#' + *{id} + ' ' + *{summary}"></h1>
