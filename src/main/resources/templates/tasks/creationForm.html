@@ -10,20 +10,20 @@
     <a th:href="@{/}">一覧</a>
 </div>
 <div>
-    <form th:action="@{/tasks}" th:method="post">
+    <form th:action="@{/tasks}" th:method="post" th:object="${taskForm}">
         <div>
             <label for="summaryInput">概要</label>
-            <input type="text" id="summaryInput" name="summary">
+            <input type="text" id="summaryInput" th:field="*{summary}">
         </div>
         <div>
             <label for="descriptionInput">詳細</label>
-            <textarea type="text" id="descriptionInput" name="description" rows="10" cols="50"></textarea>
+            <textarea type="text" id="descriptionInput" name="description" rows="10" cols="50" th:field="*{description}"></textarea>
         </div>
         <div>
             <label>ステータス</label>
-            <label><input type="radio" name="status" value="TODO" checked>Todo</label>
-            <label><input type="radio" name="status" value="DOING">Doing</label>
-            <label><input type="radio" name="status" value="DONE">Done</label>
+            <label><input type="radio" th:field="*{status}" value="TODO" checked>Todo</label>
+            <label><input type="radio" th:field="*{status}" value="DOING">Doing</label>
+            <label><input type="radio" th:field="*{status}" value="DONE">Done</label>
         </div>
         <div>
             <button type="submit">作成</button>
