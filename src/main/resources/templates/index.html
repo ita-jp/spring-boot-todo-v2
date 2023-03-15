@@ -20,7 +20,7 @@
     <thead>
     <tr th:each="task : ${taskList}" th:object="${task}">
         <td th:text="'#' + *{id}"></td>
-        <td th:text="*{title}"></td>
+        <td th:text="*{summary}"></td>
         <td th:text="*{status}"></td>
     </tr>
     </thead>

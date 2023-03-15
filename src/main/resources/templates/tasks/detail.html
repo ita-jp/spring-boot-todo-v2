@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>タスク詳細</title>
+</head>
+<body>
+<div th:object="${task}">
+    <h1 th:text="'#' + *{id} + ' ' + *{summary}"></h1>
+    <pre th:text="*{description}"></pre>
+</div>
+</body>
+</html>

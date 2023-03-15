@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,5 +22,9 @@ public class TaskService {
     @Transactional
     public void create(TaskEntity task) {
         taskRepository.insert(task);
+    }
+
+    public Optional<TaskEntity> findById(Long id) {
+        return taskRepository.selectById(id).map(TaskRecord::toEntity);
     }
 }
