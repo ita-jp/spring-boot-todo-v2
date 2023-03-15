@@ -5,6 +5,7 @@
     <title>タスク詳細</title>
 </head>
 <body>
+<a th:href="@{/}">一覧</a>
 <div th:object="${task}">
     <h1 th:text="'#' + *{id} + ' ' + *{summary}"></h1>
     <pre th:text="*{description}"></pre>
