@@ -1,6 +1,7 @@
 package com.example.todo.repository;
 
 import com.example.todo.service.TaskEntity;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -20,4 +21,7 @@ public interface TaskRepository {
 
     @Select("SELECT id, summary, description, status FROM tasks WHERE id = #{id}")
     Optional<TaskRecord> selectById(@Param("id") long id);
+
+    @Delete("DELETE FROM tasks WHERE id = #{id}")
+    void deleteById(@Param("id") long id);
 }

@@ -27,4 +27,8 @@ public class TaskService {
     public Optional<TaskEntity> findById(Long id) {
         return taskRepository.selectById(id).map(TaskRecord::toEntity);
     }
+
+    public void delete(long id) {
+        taskRepository.deleteById(id);
+    }
 }
