@@ -14,16 +14,20 @@
         <div>
             <label for="summaryInput">概要</label>
             <input type="text" id="summaryInput" th:field="*{summary}">
+            <span th:if="${#fields.hasErrors('summary')}" th:errors="*{summary}" class="error"></span>
         </div>
         <div>
             <label for="descriptionInput">詳細</label>
-            <textarea type="text" id="descriptionInput" name="description" rows="10" cols="50" th:field="*{description}"></textarea>
+            <textarea type="text" id="descriptionInput" name="description" rows="10" cols="50"
+                      th:field="*{description}"></textarea>
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"></span>
         </div>
         <div>
             <label>ステータス</label>
             <label><input type="radio" th:field="*{status}" value="TODO" checked>Todo</label>
             <label><input type="radio" th:field="*{status}" value="DOING">Doing</label>
             <label><input type="radio" th:field="*{status}" value="DONE">Done</label>
+            <span th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="error"></span>
         </div>
         <div>
             <button type="submit">作成</button>
