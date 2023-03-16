@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -23,14 +24,17 @@ public class TaskController {
     private final TaskService taskService;
 
     @GetMapping("/creationForm")
-    public String showCreationForm(@ModelAttribute TaskForm form) {
+    public String showCreationForm(@ModelAttribute TaskForm form, Model model) {
+        model.addAttribute("formMethod", "post");
+        model.addAttribute("formAction", "/tasks");
+        model.addAttribute("buttonName", "作成");
         return "tasks/creationForm";
     }
 
     @PostMapping
-    public String create(@Validated TaskForm form, BindingResult bindingResult) {
+    public String create(@Validated TaskForm form, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return showCreationForm(form);
+            return showCreationForm(form, model);
         }
         taskService.create(new TaskEntity(null, form.summary(), form.description(), TaskStatus.valueOf(form.status())));
         return "redirect:/";
@@ -50,5 +54,28 @@ public class TaskController {
     public String delete(@PathVariable("id") long id) {
         taskService.delete(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/{id}/editForm")
+    public String showEditForm(@PathVariable("id") long id, Model model) {
+        var form = taskService.findById(id)
+                .map(TaskForm::toForm)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + id));
+
+        model.addAttribute("taskForm", form);
+        model.addAttribute("formMethod", "put");
+        model.addAttribute("formAction", "/tasks/" + id);
+        model.addAttribute("buttonName", "編集");
+        return "tasks/creationForm";
+    }
+
+    @PutMapping("/{id}")
+    public String update(@PathVariable("id") long id, @Validated TaskForm form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "tasks/creationForm";
+        }
+
+        taskService.update(form.toEntity(id));
+        return "redirect:/tasks/{id}";
     }
 }

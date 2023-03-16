@@ -10,7 +10,7 @@
     <a th:href="@{/}">一覧</a>
 </div>
 <div>
-    <form th:action="@{/tasks}" th:method="post" th:object="${taskForm}">
+    <form th:action="@{${formAction}}" th:method="${formMethod}" th:object="${taskForm}">
         <div>
             <label for="summaryInput">概要</label>
             <input type="text" id="summaryInput" th:field="*{summary}">
@@ -30,7 +30,7 @@
             <span th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="error"></span>
         </div>
         <div>
-            <button type="submit">作成</button>
+            <button type="submit" th:text="${buttonName}"></button>
         </div>
     </form>
 </div>

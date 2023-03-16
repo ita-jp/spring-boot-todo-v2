@@ -6,6 +6,7 @@
 </head>
 <body>
 <a th:href="@{/}">一覧</a>
+<a th:href="@{/tasks/{id}/editForm(id=${task.id})}">編集</a>
 <form th:action="@{/tasks/{id}(id=${task.id})}" th:method="DELETE">
     <button type="submit" onclick="return confirm('タスクを削除しますか？')">削除</button>
 </form>

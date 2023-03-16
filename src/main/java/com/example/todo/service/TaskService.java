@@ -31,4 +31,10 @@ public class TaskService {
     public void delete(long id) {
         taskRepository.deleteById(id);
     }
+
+    @Transactional
+    public void update(TaskEntity entity) {
+        findById(entity.id()).orElseThrow(() -> new IllegalArgumentException("Task not found"));
+        taskRepository.update(entity);
+    }
 }
