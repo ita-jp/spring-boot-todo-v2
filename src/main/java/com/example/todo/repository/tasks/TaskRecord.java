@@ -1,7 +1,7 @@
-package com.example.todo.repository;
+package com.example.todo.repository.tasks;
 
-import com.example.todo.service.TaskEntity;
-import com.example.todo.service.TaskStatus;
+import com.example.todo.service.tasks.TaskEntity;
+import com.example.todo.service.tasks.TaskStatus;
 
 import java.util.List;
 

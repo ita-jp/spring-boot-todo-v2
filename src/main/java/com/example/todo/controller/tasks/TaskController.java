@@ -1,8 +1,8 @@
-package com.example.todo.controller;
+package com.example.todo.controller.tasks;
 
-import com.example.todo.service.TaskEntity;
-import com.example.todo.service.TaskService;
-import com.example.todo.service.TaskStatus;
+import com.example.todo.service.tasks.TaskEntity;
+import com.example.todo.service.tasks.TaskService;
+import com.example.todo.service.tasks.TaskStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

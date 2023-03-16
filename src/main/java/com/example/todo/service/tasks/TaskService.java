@@ -1,7 +1,7 @@
-package com.example.todo.service;
+package com.example.todo.service.tasks;
 
-import com.example.todo.repository.TaskRecord;
-import com.example.todo.repository.TaskRepository;
+import com.example.todo.repository.tasks.TaskRecord;
+import com.example.todo.repository.tasks.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

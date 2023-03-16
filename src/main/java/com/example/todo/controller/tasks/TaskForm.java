@@ -1,7 +1,7 @@
-package com.example.todo.controller;
+package com.example.todo.controller.tasks;
 
-import com.example.todo.service.TaskEntity;
-import com.example.todo.service.TaskStatus;
+import com.example.todo.service.tasks.TaskEntity;
+import com.example.todo.service.tasks.TaskStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

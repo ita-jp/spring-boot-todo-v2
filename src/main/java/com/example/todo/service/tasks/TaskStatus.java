@@ -1,4 +1,4 @@
-package com.example.todo.service;
+package com.example.todo.service.tasks;
 
 public enum TaskStatus {
     TODO,

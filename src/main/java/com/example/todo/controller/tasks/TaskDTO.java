@@ -1,8 +1,6 @@
-package com.example.todo.controller;
+package com.example.todo.controller.tasks;
 
-import com.example.todo.service.TaskEntity;
-
-import java.util.List;
+import com.example.todo.service.tasks.TaskEntity;
 
 public record TaskDTO(
         long id,
@@ -10,12 +8,6 @@ public record TaskDTO(
         String description,
         String status
 ) {
-    public static List<TaskDTO> toDTO(List<TaskEntity> entityList) {
-        return entityList.stream()
-                .map(TaskDTO::toDTO)
-                .toList();
-    }
-
     public static TaskDTO toDTO(TaskEntity entity) {
         return new TaskDTO(
                 entity.id(),
