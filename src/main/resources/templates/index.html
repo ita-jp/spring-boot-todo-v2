@@ -7,23 +7,7 @@
 <body>
 <h1>TODO</h1>
 <div>
-    <a th:href="@{/tasks/creationForm}">タスク作成</a>
+    <a th:href="@{/tasks}">タスク一覧</a>
 </div>
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>概要</th>
-        <th>ステータス</th>
-    </tr>
-    </thead>
-    <thead>
-    <tr th:each="task : ${taskList}" th:object="${task}">
-        <td><a th:href="@{/tasks/{id}(id=*{id})}" th:text="'#' + *{id}"></a></td>
-        <td><a th:href="@{/tasks/{id}(id=*{id})}" th:text="*{summary}"></a></td>
-        <td th:text="*{status}"></td>
-    </tr>
-    </thead>
-</table>
 </body>
 </html>

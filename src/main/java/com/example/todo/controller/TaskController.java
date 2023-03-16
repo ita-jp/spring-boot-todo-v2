@@ -23,6 +23,13 @@ public class TaskController {
 
     private final TaskService taskService;
 
+    @GetMapping
+    public String index(Model model) {
+        model.addAttribute("taskList", taskService.findAll());
+        return "tasks/list";
+    }
+
+
     @GetMapping("/creationForm")
     public String showCreationForm(@ModelAttribute TaskForm form, Model model) {
         model.addAttribute("formMethod", "post");
@@ -37,7 +44,7 @@ public class TaskController {
             return showCreationForm(form, model);
         }
         taskService.create(new TaskEntity(null, form.summary(), form.description(), TaskStatus.valueOf(form.status())));
-        return "redirect:/";
+        return "redirect:/tasks";
     }
 
     @GetMapping("/{id}")
@@ -53,7 +60,7 @@ public class TaskController {
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") long id) {
         taskService.delete(id);
-        return "redirect:/";
+        return "redirect:/tasks";
     }
 
     @GetMapping("/{id}/editForm")
