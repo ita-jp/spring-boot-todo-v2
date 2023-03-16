@@ -35,13 +35,13 @@ public class TaskController {
         model.addAttribute("formMethod", "post");
         model.addAttribute("formAction", "/tasks");
         model.addAttribute("buttonName", "作成");
-        return "tasks/creationForm";
+        return "tasks/form";
     }
 
     @PostMapping
-    public String create(@Validated TaskForm form, BindingResult bindingResult, Model model) {
+    public String create(@Validated TaskForm form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return showCreationForm(form, model);
+            return "tasks/form";
         }
         taskService.create(new TaskEntity(null, form.summary(), form.description(), TaskStatus.valueOf(form.status())));
         return "redirect:/tasks";
@@ -73,13 +73,13 @@ public class TaskController {
         model.addAttribute("formMethod", "put");
         model.addAttribute("formAction", "/tasks/" + id);
         model.addAttribute("buttonName", "編集");
-        return "tasks/creationForm";
+        return "tasks/form";
     }
 
     @PutMapping("/{id}")
     public String update(@PathVariable("id") long id, @Validated TaskForm form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "tasks/creationForm";
+            return "tasks/form";
         }
 
         taskService.update(form.toEntity(id));
