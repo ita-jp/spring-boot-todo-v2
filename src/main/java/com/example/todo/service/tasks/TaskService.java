@@ -1,6 +1,5 @@
 package com.example.todo.service.tasks;
 
-import com.example.todo.repository.tasks.TaskRecord;
 import com.example.todo.repository.tasks.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ public class TaskService {
     private final TaskRepository taskRepository;
 
     public List<TaskEntity> findAll() {
-        return TaskRecord.toEntity(taskRepository.select());
+        return taskRepository.select();
     }
 
     @Transactional
@@ -25,7 +24,7 @@ public class TaskService {
     }
 
     public Optional<TaskEntity> findById(Long id) {
-        return taskRepository.selectById(id).map(TaskRecord::toEntity);
+        return taskRepository.selectById(id);
     }
 
     public void delete(long id) {
