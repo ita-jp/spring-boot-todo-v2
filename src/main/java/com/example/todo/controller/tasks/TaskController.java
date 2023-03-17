@@ -72,7 +72,7 @@ public class TaskController {
         model.addAttribute("taskForm", form);
         model.addAttribute("formMethod", "put");
         model.addAttribute("formAction", "/tasks/" + id);
-        model.addAttribute("buttonName", "編集");
+        model.addAttribute("buttonName", "更新");
         return "tasks/form";
     }
 

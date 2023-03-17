@@ -1,38 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>タスク作成</title>
+    <title>タスク</title>
 </head>
 <body>
-<h1>タスク作成</h1>
-<div>
-    <a th:href="@{/}">一覧</a>
-</div>
-<div>
-    <form th:action="@{${formAction}}" th:method="${formMethod}" th:object="${taskForm}">
-        <div>
-            <label for="summaryInput">概要</label>
-            <input type="text" id="summaryInput" th:field="*{summary}">
-            <span th:if="${#fields.hasErrors('summary')}" th:errors="*{summary}" class="error"></span>
-        </div>
-        <div>
-            <label for="descriptionInput">詳細</label>
-            <textarea type="text" id="descriptionInput" name="description" rows="10" cols="50"
-                      th:field="*{description}"></textarea>
-            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"></span>
-        </div>
-        <div>
-            <label>ステータス</label>
-            <label><input type="radio" th:field="*{status}" value="TODO" checked>Todo</label>
-            <label><input type="radio" th:field="*{status}" value="DOING">Doing</label>
-            <label><input type="radio" th:field="*{status}" value="DONE">Done</label>
-            <span th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="error"></span>
-        </div>
-        <div>
-            <button type="submit" th:text="${buttonName}"></button>
-        </div>
-    </form>
-</div>
+<section layout:fragment="content">
+    <div>
+        <form th:action="@{${formAction}}" th:method="${formMethod}" th:object="${taskForm}">
+            <div class="form-group">
+                <label for="summaryInput">概要</label>
+                <input type="text" id="summaryInput" th:field="*{summary}" class="form-control">
+                <span th:if="${#fields.hasErrors('summary')}" th:errors="*{summary}" class="error"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label for="descriptionInput">詳細</label>
+                <textarea type="text" id="descriptionInput" name="description" rows="10" cols="50"
+                          th:field="*{description}" class="form-control"></textarea>
+                <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label for="statusInput">ステータス</label>
+                <select class="form-select" id="statusInput" th:field="*{status}">
+                    <option value="TODO">Todo</option>
+                    <option value="DOING">Doing</option>
+                    <option value="DONE">Done</option>
+                </select>
+                <span th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="error"></span>
+            </div>
+            <div class="mt-3">
+                <button type="submit" th:text="${buttonName}" class="btn btn-primary"></button>
+            </div>
+        </form>
+    </div>
+</section>
 </body>
 </html>
