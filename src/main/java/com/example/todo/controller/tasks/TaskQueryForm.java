@@ -16,4 +16,8 @@ public record TaskQueryForm(
                 .orElse(List.of());
         return new TaskQueryEntity(summary, statusEntityList);
     }
+
+    public TaskQueryDTO toDTO() {
+        return new TaskQueryDTO(summary, status);
+    }
 }

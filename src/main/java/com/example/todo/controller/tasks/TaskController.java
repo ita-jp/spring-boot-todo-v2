@@ -26,6 +26,7 @@ public class TaskController {
     @GetMapping
     public String index(TaskQueryForm query, Model model) {
         model.addAttribute("taskList", taskService.find(query.toEntity()));
+        model.addAttribute("taskQuery", query.toDTO());
         return "tasks/list";
     }
 
