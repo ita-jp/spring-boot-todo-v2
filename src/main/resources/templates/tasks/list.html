@@ -21,19 +21,19 @@
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="statusTodoQueryInput" name="status"
                                value="TODO"
-                               th:checked="${taskQuery.statusList != null and taskQuery.statusList.contains('TODO')}">
+                               th:checked="${taskQuery.statusList != null and taskQuery.isChecked('TODO')}">
                         <label class="form-check-label" for="statusTodoQueryInput">Todo</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="statusDoingQueryInput" name="status"
                                value="DOING"
-                               th:checked="${taskQuery.statusList != null and taskQuery.statusList.contains('DOING')}">
+                               th:checked="${taskQuery.statusList != null and taskQuery.isChecked('DOING')}">
                         <label class="form-check-label" for="statusDoingQueryInput">Doing</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="statusDoneQueryInput" name="status"
                                value="DONE"
-                               th:checked="${taskQuery.statusList != null and taskQuery.statusList.contains('DONE')}">
+                               th:checked="${taskQuery.statusList != null and taskQuery.isChecked('DONE')}">
                         <label class="form-check-label" for="statusDoneQueryInput">Done</label>
                     </div>
                 </fieldset>

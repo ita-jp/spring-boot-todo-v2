@@ -6,4 +6,7 @@ public record TaskQueryDTO(
         String summary,
         List<String> statusList
 ) {
+    public boolean isChecked(String status) {
+        return statusList.contains(status);
+    }
 }
