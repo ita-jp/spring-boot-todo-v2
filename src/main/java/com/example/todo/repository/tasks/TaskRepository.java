@@ -1,6 +1,7 @@
 package com.example.todo.repository.tasks;
 
 import com.example.todo.service.tasks.TaskEntity;
+import com.example.todo.service.tasks.TaskQueryEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -13,8 +14,8 @@ public class TaskRepository {
 
     private final TaskMapper taskMapper;
 
-    public List<TaskEntity> select() {
-        return TaskRecord.toEntity(taskMapper.select());
+public List<TaskEntity> select(TaskQueryEntity query) {
+        return TaskRecord.toEntity(taskMapper.select(query.summary(), query.status()));
     }
 
     public void insert(TaskEntity taskEntity) {

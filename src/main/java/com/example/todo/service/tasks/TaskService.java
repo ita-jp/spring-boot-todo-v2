@@ -14,8 +14,8 @@ public class TaskService {
 
     private final TaskRepository taskRepository;
 
-    public List<TaskEntity> findAll() {
-        return taskRepository.select();
+    public List<TaskEntity> find(TaskQueryEntity query) {
+        return taskRepository.select(query);
     }
 
     @Transactional
@@ -36,4 +36,5 @@ public class TaskService {
         findById(entity.id()).orElseThrow(() -> new IllegalArgumentException("Task not found"));
         taskRepository.update(entity);
     }
+
 }
