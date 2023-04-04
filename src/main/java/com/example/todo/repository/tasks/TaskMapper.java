@@ -32,13 +32,13 @@ public interface TaskMapper {
       </where>
     </script>
     """)
-    List<TaskRecord> select(@Param("summary") String summary, @Param("statusList") List<TaskStatus> status);
+    List<TaskEntity> select(@Param("summary") String summary, @Param("statusList") List<TaskStatus> status);
 
     @Insert("INSERT INTO tasks (summary, description, status) VALUES (#{task.summary}, #{task.description}, #{task.status})")
     void insert(@Param("task") TaskEntity taskEntity);
 
     @Select("SELECT id, summary, description, status FROM tasks WHERE id = #{id}")
-    Optional<TaskRecord> selectById(@Param("id") long taskId);
+    Optional<TaskEntity> selectById(@Param("id") long taskId);
 
     @Delete("DELETE FROM tasks WHERE id = #{id}")
     void deleteById(@Param("id") long taskId);

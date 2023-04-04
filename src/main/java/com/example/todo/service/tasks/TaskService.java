@@ -1,6 +1,6 @@
 package com.example.todo.service.tasks;
 
-import com.example.todo.repository.tasks.TaskRepository;
+import com.example.todo.repository.tasks.TaskMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,10 +12,10 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TaskService {
 
-    private final TaskRepository taskRepository;
+    private final TaskMapper taskRepository;
 
     public List<TaskEntity> find(TaskQueryEntity query) {
-        return taskRepository.select(query);
+        return taskRepository.select(query.summary(), query.status());
     }
 
     @Transactional
